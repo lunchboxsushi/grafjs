@@ -6,8 +6,39 @@
  * @param {number} grafType the type of graph that is expected to be drawn and have data for
  * @param {grafConfig} grafConfig takes a graphConfig class for the configuration of the graph itself
  */
-var Graf = function (canvas, grafType, grafConfig) {
-    let config = grafConfig;
+let Graf = function (canvas, grafType, grafConfig) {
+    this.type = grafType;
+    this.config = grafConfig;
+};
+
+/**
+ * @name setDraw this function will set the draw function that will exection on each redraw depending on the type of graph that was setup to be drawn
+ * @function
+ * @return {void}
+ */
+Graf.prototype.draw = function() {    
+    switch (this.type) {
+        case this.GRAF_TYPE.Bar:
+            drawBar();
+        case this.GRAF_TYPE.Pie:
+            drawPie();
+    }
+}
+
+Graf.prototype.drawBar = function() {
+    //using the canvas draw what is needed
+}
+
+Graf.prototype.drawPie = function() {
+    //using the canvas draw what is needed
+}
+
+/**
+ * @enum {number}
+ */
+Graf.prototype.GRAF_TYPE = {
+    Bar: 0,
+    Pie: 1
 };
 
 
@@ -21,7 +52,7 @@ var Graf = function (canvas, grafType, grafConfig) {
  * @param {string} title the title for the graph that will be displayed at the top
  * @param { }
  */
-var GrapfConfig = function (coordiante, xDescription, yDescription, title) {}
+let GrapfConfig = function (coordiante, xDescription, yDescription, title) {}
 
 /**
  * Coordiante of the position for a value to be represented, a value x pair to a value y
@@ -30,17 +61,7 @@ var GrapfConfig = function (coordiante, xDescription, yDescription, title) {}
  * @param {number} x value for the x position
  * @param {number} y value for the y position
  */
-var Coordiante = function (x, y) {}
-
-
-/**
- * @enum {number}
- */
-Graf.prototype.GRAF_TYPE = {
-    Bar: 0,
-    Pie: 1
-};
-
+let Coordiante = function (x, y) {}
 
 var simpleFinance = new Graf(null, )
 
