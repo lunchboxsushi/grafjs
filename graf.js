@@ -25,11 +25,20 @@ Graf.prototype.draw = function() {
     }
 }
 
-Graf.prototype.drawBar = function() {
+/**
+ * @private
+ * @function
+ */
+let drawBar = function() {
     //using the canvas draw what is needed
 }
 
-Graf.prototype.drawPie = function() {
+/**
+ * this will draw a pie graph of the data that is provded by the Graf obj
+ * @private
+ * @function
+ */
+let drawPie = function() {
     //using the canvas draw what is needed
 }
 
@@ -63,7 +72,8 @@ let GrapfConfig = function (coordiante, xDescription, yDescription, title) {}
  */
 let Coordiante = function (x, y) {}
 
-var simpleFinance = new Graf(null, )
+var simpleFinance = new Graf(null, null, null);
+simpleFinance.draw();
 
 
 
