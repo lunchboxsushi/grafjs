@@ -8,4 +8,4 @@ a minor goal is to create a fluid 60fps experience fo using this tool while also
 
 my goal is to provide a high level api for simple cases to create an instant mapping, my other goal is to allow a simple interface to extend the underlying calculations while having the rendering engine do its job.
 
-* this engine will be used in my next project <future url here>
+* this engine will be used in my next project [future url to be here]
