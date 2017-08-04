@@ -1,7 +1,5 @@
-(function (w) {
-    'use strict';
-
-    w.grafjs = w.grafjs || {};
+(function (grafjs) {
+    'use strict';    
 
     /**
      * the Graf class is the main class object that will be used for the drawing engine this 
@@ -12,9 +10,10 @@
      * @param {number} grafType the type of graph that is expected to be drawn and have data for
      * @param {grafConfig} grafConfig takes a graphConfig class for the configuration of the graph itself
      */
-    grafjs.Graf = function (canvas, grafType, grafConfig) {
+    let Graf = function (canvas, grafType, grafConfig) {
         this.type = grafType;
         this.config = grafConfig;
+        this.ctx = canvas.getContext('2d');
     };
 
     /**
@@ -22,12 +21,12 @@
      * @function
      * @return {void}
      */
-    grafjs.Graf.prototype.draw = function () {
+    Graf.prototype.draw = function () {
         switch (this.type) {
-            case grafjs.GRAF_TYPE.Bar:
-                drawBar();
-            case grafjs.GRAF_TYPE.Pie:
-                drawPie();
+            case GRAF_TYPE.Bar:
+                drawBar(this.ctx);
+            case GRAF_TYPE.Pie:
+                drawPie(this.ctx);
         }
     }
 
@@ -35,8 +34,10 @@
      * @private
      * @function
      */
-    let drawBar = function () {
+    let drawBar = function (context) {
         //using the canvas draw what is needed
+        context.fillStyle = 'rgb(200,0,0)';
+        context.fillRect(10,10,50,50);
     }
 
     /**
@@ -44,14 +45,14 @@
      * @private
      * @function
      */
-    let drawPie = function () {
+    let drawPie = function (context) {
         //using the canvas draw what is needed
     }
 
     /**
      * @enum {number}
      */
-    grafjs.GRAF_TYPE = {
+    let GRAF_TYPE = {
         Bar: 0,
         Pie: 1,
     };
@@ -67,7 +68,7 @@
      * @param {string} yDescription the title for the y axis to be displayed
      * @param {string} title the title for the graph that will be displayed at the top     
      */
-    grafjs.GrafConfig = function (points, xDescription, yDescription, title) {}
+    let GrafConfig = function (points, xDescription, yDescription, title) {}
 
     /**
      * Coordiante of the position for a value to be represented, a value x pair to a value y
@@ -76,12 +77,12 @@
      * @param {number} x value for the x position
      * @param {number} y value for the y position
      */
-    grafjs.Point = function (x, y) {}
+    let Point = function (x, y) {}
 
-    // let graphBucket = [new Point(2, 3), new Point(5, 3), new Point(5, 9)];
-    // var grafConf = new GrafConfig(graphBucket, "Years old", "daily Income", "age vs income chart");
+    //attach to our grafjs obj for return 
+    grafjs.Graf = Graf;
+    grafjs.GRAF_TYPE = GRAF_TYPE;
+    grafjs.GrafConfig = GrafConfig;
+    grafjs.Point = Point;
 
-    // var simpleFinance = new Graf(null, null, null);
-    // simpleFinance.draw();
-
-})(window);
+})(window.grafjs = window.grafjs || {});
