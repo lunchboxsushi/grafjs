@@ -6,5 +6,13 @@ pipeline {
         echo 'Hello'
       }
     }
+    stage('git') {
+      steps {
+        git(url: 'https://github.com/lunchboxsushi/grafjs', branch: 'master')
+        sh '''#!/bin/sh
+
+git fetch'''
+      }
+    }
   }
 }
