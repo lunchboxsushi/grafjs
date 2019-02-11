@@ -1,14 +1,12 @@
 pipeline {
   agent none
   stages {
-    stage('msg') {
+    stage('nodejs init') {
       steps {
-        echo 'Working'
-      }
-    }
-    stage('pull latest') {
-      steps {
-        bat 'java -jar jenkins.war'
+        node(label: 'nodejs') {
+          bat 'npm run'
+        }
+
       }
     }
   }
