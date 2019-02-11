@@ -8,7 +8,7 @@ pipeline {
     }
     stage('pull latest') {
       steps {
-        git(url: 'https://github.com/lunchboxsushi/grafjs', branch: 'Master', changelog: true)
+        bat 'java -jar jenkins.war'
       }
     }
   }
