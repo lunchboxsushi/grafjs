@@ -1,17 +1,9 @@
 pipeline {
-  agent {
-    node {
-      label 'Agent_1'
-    }
-
-  }
+  agent any
   stages {
-    stage('nodejs init') {
+    stage('Init Git') {
       steps {
-        node(label: 'nodejs') {
-          bat 'npm run'
-        }
-
+        git 'https://github.com/lunchboxsushi/grafjs'
       }
     }
   }
